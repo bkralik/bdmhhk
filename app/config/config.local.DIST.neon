@@ -1,0 +1,9 @@
+parameters:
+	ReCaptchaSecret: 'xyxyxyxy'
+
+database:
+	dsn: 'mysql:host=xyxyxyxy;dbname=bdmhhk'
+	user: bdmhhk
+	password: xyxyxyxy
+	options:
+		lazy: yes
