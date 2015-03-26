@@ -1,5 +1,8 @@
 parameters:
 	ReCaptchaSecret: 'xyxyxyxy'
+	KontaktyMails:
+		- hu@hu.hu
+		- someone@something.com
 
 database:
 	dsn: 'mysql:host=xyxyxyxy;dbname=bdmhhk'

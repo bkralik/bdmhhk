@@ -63,12 +63,17 @@ class KontaktPresenter extends BasePresenter
     // volá se po úspěšném odeslání formuláře
     public function emailFormSucceeded(UI\Form $form, $values)
     {
+        $targetMails = $this->context->parameters["KontaktyMails"];
+        
         $mail = new Message;
         $mail->setFrom('bdmhhk <robot@bdmhhk.cz>')
-            ->addTo('xkralik@seznam.cz')
             ->setSubject('Nová zpráva z webu bdmhhk.cz')
             ->addReplyTo($values->email)
             ->setBody($values->name." s emailem ".$values->email." posílá následující dotaz: \n\n".$values->message);
+        
+        foreach($targetMails as $mail) {
+            $mail->addTo($mail);
+        }
 
         $mailer = new SendmailMailer;
         $mailer->send($mail);
