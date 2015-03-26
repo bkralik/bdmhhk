@@ -1,0 +1,13 @@
+{block content}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Fotogalerie</h2>
+            <div class="row">
+                <div class="col-xs-6 col-md-3" n:foreach="$fotky as $fotka">
+                    <a href="{$basePath}/{$fotka["velka"]}" class="thumbnail" data-lightbox="galerie">
+                        <img src="{$basePath}/{$fotka["miniatura"]}" alt="...">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

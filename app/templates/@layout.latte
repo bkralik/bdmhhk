@@ -1,0 +1,73 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{ifset #title}{include title|striptags} | {/ifset}BD Milady Horákové 1071-1072</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="{$basePath}/css/justified.css" rel="stylesheet">
+    
+    <link href="{$basePath}/css/lightbox.css" rel="stylesheet">
+    
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+</head>
+
+<body>
+	<script> document.documentElement.className+=' js' </script>
+
+	
+
+    <div class="container">
+
+      <div class="masthead">
+        <h3>Bytové družstvo Milady Horákové 1071 - 1072</h3>
+        <ul class="nav nav-justified">
+          <li n:class="$presenter->isLinkCurrent('Homepage:*') ? active"><a n:href="Homepage:default">Info</a></li>
+          <li n:class="$presenter->isLinkCurrent('Dokumenty:*') ? active"><a n:href="Dokumenty:default">Dokumenty ke stažení</a></li>
+          <li n:class="$presenter->isLinkCurrent('Fotogalerie:*') ? active"><a n:href="Fotogalerie:default">Fotografie</a></li>
+          <li n:class="$presenter->isLinkCurrent('Kontakt:*') ? active"><a n:href="Kontakt:default">Kontakt</a></li>
+        </ul>
+        <br>
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        <!--
+        <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 27. 1. 2015 v 18:30 se bude konat členská schůze! Pozvánka je dostupná <a href="dokumenty/pozvanka_cs_nove_stanovy.pdf">zde</a>.</div>
+        -->
+      </div>
+      
+      {include content}
+
+      <!-- Site footer -->
+      <div class="footer">
+        <p>&copy; bdmhhk.cz 2014</p>
+      </div>
+
+    </div> <!-- /container -->
+    
+	
+
+	{block scripts}
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+    <script src="{$basePath}/js/lightbox.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+</body>
+</html>
