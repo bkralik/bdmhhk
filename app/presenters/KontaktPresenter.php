@@ -71,8 +71,8 @@ class KontaktPresenter extends BasePresenter
             ->addReplyTo($values->email)
             ->setBody($values->name." s emailem ".$values->email." posílá následující dotaz: \n\n".$values->message);
         
-        foreach($targetMails as $mail) {
-            $mail->addTo($mail);
+        foreach($targetMails as $address) {
+            $mail->addTo($address);
         }
 
         $mailer = new SendmailMailer;
