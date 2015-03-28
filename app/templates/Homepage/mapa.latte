@@ -1,0 +1,50 @@
+{block content}
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Mapa</h2>
+        <div id="m" style="height:380px"></div>
+    </div>
+</div>
+<script>
+    /* global SMap */
+    /* global JAK */
+    var center = SMap.Coords.fromWGS84(15.8482182, 50.1880415);
+    var m = new SMap(JAK.gel("m"), center, 17);
+    m.addDefaultLayer(SMap.DEF_BASE).enable();
+    m.addDefaultControls();
+
+    var layer = new SMap.Layer.Marker();
+    m.addLayer(layer);
+    layer.enable();
+
+    function genMarker(name, address, x, y) {
+        var card = new SMap.Card();
+        card.getHeader().innerHTML = "<strong>Vchod " + name + "</strong>";
+        card.getBody().innerHTML = address;
+
+        var center = SMap.Coords.fromWGS84(x, y);
+
+        var znacka = JAK.mel("div");
+        var obrazek = JAK.mel("img", { src:SMap.CONFIG.img+"/marker/drop-red.png" });
+        znacka.appendChild(obrazek);
+
+        var popisek = JAK.mel("div", { }, { position:"absolute", left:"0px", top:"5px", textAlign:"center", width:"22px", color:"white", fontWeight:"bold", fontSize:"9px" });
+        popisek.innerHTML = name;
+        znacka.appendChild(popisek);
+
+        var options = { 
+            url: znacka
+        };
+
+        var marker = new SMap.Marker(center, null, options);
+        marker.decorate(SMap.Marker.Feature.Card, card);
+        return(marker);
+    }
+
+    
+    var marker1071 = genMarker("1071", "Milady Horákové 1071, Hradec Králové 6, 500 06", 15.8485025, 50.1880689);
+    var marker1072 = genMarker("1072", "Milady Horákové 1072, Hradec Králové 6, 500 06", 15.8482664, 50.1880244);
+    layer.addMarker(marker1072);
+    layer.addMarker(marker1071);
+</script>
+    

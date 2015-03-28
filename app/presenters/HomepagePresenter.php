@@ -17,4 +17,9 @@ class HomepagePresenter extends BasePresenter
 		$this->template->anyVariable = 'any value';
 	}
 
+    public function renderMapa()
+    {
+        
+        
+    }
 }

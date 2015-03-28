@@ -16,6 +16,13 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     
+    {block scripts}
+	<script src="{$basePath}/js/jquery.js"></script>
+	<script src="{$basePath}/js/netteForms.js"></script>
+    <script src="{$basePath}/js/lightbox.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+    
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
@@ -24,7 +31,10 @@
     
     <link href="{$basePath}/css/lightbox.css" rel="stylesheet">
     
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script n:if="$presenter->isLinkCurrent('Kontakt:*')" src='https://www.google.com/recaptcha/api.js'></script>
+    
+    <script n:if="$presenter->isLinkCurrent('Homepage:Mapa')" type="text/javascript" src="//api.mapy.cz/loader.js"></script>
+    <script n:if="$presenter->isLinkCurrent('Homepage:Mapa')" type="text/javascript">Loader.load();</script>
     
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
 	{block head}{/block}
@@ -60,14 +70,5 @@
       </div>
 
     </div> <!-- /container -->
-    
-	
-
-	{block scripts}
-	<script src="{$basePath}/js/jquery.js"></script>
-	<script src="{$basePath}/js/netteForms.js"></script>
-    <script src="{$basePath}/js/lightbox.min.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
-	{/block}
 </body>
 </html>
